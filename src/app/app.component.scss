@@ -1,0 +1,36 @@
+:host {
+
+  font-family: 'Roboto', sans-serif;
+
+  .hash {
+    display: flex;
+
+    .squad {
+      width: 100px;
+      margin: 2px;
+      height: 100px;
+      background-color: #3a4484;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      box-shadow: 1px 1px 4px 1px #9a96967a;
+
+      span {
+        font-size: 30px;
+        color: #fff;
+      }
+
+      &:active {
+        height: 102px;
+        width: 102px;
+        transform: rotate(180deg);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+
+    .disabled {
+      background-color: #3a4484cf;
+    }
+  }
+}
