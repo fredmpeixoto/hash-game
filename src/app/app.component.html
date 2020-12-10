@@ -1,13 +1,24 @@
-<h2>Next Player : {{currentlyPlayer}}</h2>
-<h2>Winner : {{currentlyWinner}}</h2>
+<section class="header">
 
-<div *ngFor="let row of hashSquad; index as indexRow" class="hash">
-  <div class="squad" [class.disabled]="column.choice" *ngFor="let column of row; index as indexColumn"
-    (click)="move(column, indexColumn, indexRow)">
+  <h2>Next Player : {{currentlyPlayer}}</h2>
 
-    <span>
-      {{column?.choice}}
-    </span>
+  <h2>Winner : {{currentlyWinner}}</h2>
+
+</section>
+
+<section id="squad">
+
+  <div *ngFor="let row of hashSquad; index as indexRow" class="hash">
+
+    <div class="squad" [class.disabled]="column.choice" *ngFor="let column of row; index as indexColumn"
+      (click)="move(column, indexColumn, indexRow)">
+
+      <span>
+        {{column?.choice}}
+      </span>
+
+    </div>
 
   </div>
-</div>
+
+</section>
