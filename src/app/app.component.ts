@@ -13,10 +13,13 @@ export class AppComponent {
   public numberOfMove: number;
   public currentlyPlayer: string;
   public currentlyWinner: string;
+  public numberWinners: { playerX: number; playerO: number };
 
   constructor() {
 
     this.currentlyPlayer = 'X';
+
+    this.numberWinners = { playerO: 0, playerX: 0 };
 
     this.startGame();
   }
@@ -43,16 +46,25 @@ export class AppComponent {
 
     if (this.numberOfMove > 4 && this.checkWinner(move.choice, indexColumn, indexRow)) {
       this.currentlyWinner = move.choice;
+      this.setCounterWinner(this.currentlyWinner);
       return;
     }
 
     this.currentlyPlayer = this.currentlyPlayer === 'X' ? 'O' : 'X';
   }
+  setCounterWinner(currentlyWinner: string) {
+
+    if (currentlyWinner.toUpperCase() === 'X') this.numberWinners.playerX++;
+    else this.numberWinners.playerO++;
+
+  }
 
   checkWinner(myChoice: string, indexColumn: number, indexRow: number): boolean {
+
     return this.thereIsSameChoiceByRow(myChoice, indexRow) ||
       this.thereIsSameChoiceByColumn(myChoice, indexColumn) ||
       this.thereIsByXChoice(myChoice);
+
   }
 
   thereIsSameChoiceByRow(myChoice: string, indexRow: number): boolean {
