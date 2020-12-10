@@ -10,15 +10,20 @@ import { Player } from './shared/player';
 export class AppComponent {
 
   public hashSquad: Player[][];
-  private numberOfMove: number;
+  public numberOfMove: number;
   public currentlyPlayer: string;
   public currentlyWinner: string;
 
   constructor() {
 
     this.currentlyPlayer = 'X';
-    this.numberOfMove = 0;
 
+    this.startGame();
+  }
+
+  private startGame() {
+    this.currentlyWinner = undefined;
+    this.numberOfMove = 0;
     this.hashSquad = [
       [{}, {}, {}],
       [{}, {}, {}],
@@ -80,5 +85,14 @@ export class AppComponent {
     const indexSearch = arrayLenght - indexRow;
 
     return row[indexSearch].choice === myChoice;
+  }
+
+  disabledBtn(): boolean {
+    return this.numberOfMove < 5;
+  }
+
+  resetGame(): void {
+    this.hashSquad.length = 0;
+    this.startGame();
   }
 }
